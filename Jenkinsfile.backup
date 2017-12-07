@@ -3,8 +3,8 @@ pipeline {
    
     parameters{
 
-booleanParam(description: '',name:'boolean_param')
-string(description:'No description',name:'string_param')
+booleanParam(defaultValue: true,description: '',name:'boolean_param')
+string(defaultValue:"this is to test string parameter",description:'No description',name:'string_param')
 choice(choices: 'choice1\nchoice2\nchoice3',description: 'this is demo of choice pipeline parameter',name: 'choice_param') 
 
 }
