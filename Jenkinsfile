@@ -1,20 +1,32 @@
+properties([$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/NaveenKrishnaVeridic/Task_repo2.git/'])
+
 pipeline {
     agent any
+   
+    parameters{
+
+booleanParam(defaultValue: true,description: '',name:'boolean_param')
+string(defaultValue:"this is to test string parameter",description:'No description',name:'string_param')
+choice(choices: 'choice1\nchoice2\nchoice3',description: 'this is demo of choice pipeline parameter',name: 'choice_param') 
+
+}
+  
+
 
     stages {
-        stage('Build') {
+        stage('boolean') {
             steps {
-                echo 'Building..'
+                echo 'calling boolean parameter  ${params.boolean_param}'
             }
         }
-        stage('Test') {
+        stage('string') {
             steps {
-                echo 'Testing..'
+                echo 'calling string parameter ${params.string_param}'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'calling choice parameter ${params.choice_param}'
             }
         }
     }
